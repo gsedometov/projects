@@ -1,7 +1,22 @@
 version: '2'
 services:
+  db:
+    container_name: postgres
+    image: "postgres:alpine"
+    environment: 
+      POSTGRES_PASSWORD: redmine
+      POSTGRES_USER: redmine
   projects:
+    container_name: redmine
     build: ./redmine/
+    depends_on:
+      - db
+    environment: 
+      REDMINE_DB_POSTGRES: db
+      REDMINE_DB_DATABASE: redmine
+      REDMINE_DB_PASSWORD: redmine
+      REDMINE_DB_USERNAME: redmine
     ports:
       - "80:3000"
-    
+  backup:
+    build: ./backup/
