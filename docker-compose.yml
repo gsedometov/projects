@@ -2,7 +2,17 @@ version: '2'
 services:
   projects:
     image: "redmine:latest"
+    expose:
+      - "3000"
   files:
-    image: "redis:alpine"
+    image: "nuxeo:latest"
+    expose:
+      - "8080"
   web:
-    image: "nginx:alpine"
+    build: ./nginx/
+    links:
+      - "projects"
+      - "files"
+    ports:
+      - "80:80"
+    
