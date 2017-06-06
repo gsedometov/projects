@@ -1,0 +1,8 @@
+version: '2'
+services:
+  projects:
+    image: "redmine:latest"
+  files:
+    image: "redis:alpine"
+  web:
+    image: "nginx:alpine"
