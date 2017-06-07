@@ -1,0 +1,1 @@
+pg_dump > /backups/dump.db

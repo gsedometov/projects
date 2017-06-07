@@ -20,3 +20,13 @@ services:
       - "80:3000"
   backup:
     build: ./backup/
+    depends_on: 
+      - db
+      - projects
+    volumes: 
+      - ./backups:/backups
+    environment: 
+      REDMINE_DB_POSTGRES: db
+      REDMINE_DB_DATABASE: redmine
+      REDMINE_DB_PASSWORD: redmine
+      REDMINE_DB_USERNAME: redmine
