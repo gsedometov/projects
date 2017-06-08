@@ -12,7 +12,7 @@ services:
     depends_on:
       - db
     volumes: 
-      - files:/usr/src/redmine/files
+      - ./files:/usr/src/redmine/files
     environment: 
       REDMINE_DB_POSTGRES: db
       REDMINE_DB_DATABASE: redmine
@@ -27,11 +27,8 @@ services:
       - projects
     volumes: 
       - ./backups:/backups
-      - files:/files:ro
+      - ./files:/files:ro
     environment: 
       PGHOST: db
       PGPASSWORD: redmine
       PGUSER: redmine
-
-volumes: 
-  - files:./files
