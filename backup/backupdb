@@ -19,6 +19,7 @@ def wait_redmine():
                 return
         except Exception as e:  #pylint: disable=broad-except
             log.warning(e)
+            time.sleep(10)
 
 BACKUP_PATH = '/backups/dump.db'
 
