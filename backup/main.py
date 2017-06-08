@@ -16,7 +16,7 @@ log.addHandler(stream_handler)
 def wait_redmine():
     while True:
         try:
-            resp = requests.get('http://redmine', timeout=10)
+            resp = requests.get('http://projects', timeout=10)
             if resp.status_code == 200:
                 return
         except Exception as e:  #pylint: disable=broad-except
