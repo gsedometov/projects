@@ -5,8 +5,8 @@ RUN apk update \
     && pip3 install requests
 
 COPY supervisord.conf /etc/supervisord.conf
-COPY backupdb /bin/backupdb
-RUN chmod +x /bin/backupdb
+COPY main.py /bin/main.py
+RUN chmod +x /bin/main.py
 
 ENTRYPOINT ["supervisord", "--nodaemon", "-c", "/etc/supervisord.conf"]
 
