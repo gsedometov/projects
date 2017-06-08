@@ -27,7 +27,8 @@ services:
       - projects
     volumes: 
       - ./backups:/backups
-      - ./files:/files:ro
+    volumes_from: 
+      - projects:ro
     environment: 
       PGHOST: db
       PGPASSWORD: redmine
