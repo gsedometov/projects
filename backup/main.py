@@ -28,7 +28,7 @@ BACKUP_PATH = '/backups/dump.db'
 async def backup_db():
     if os.path.isfile(BACKUP_PATH):
         os.rename(BACKUP_PATH, BACKUP_PATH+'.old')
-    subprocess.check_call('pg_dump > /backups/dump.db')
+    subprocess.check_call('pg_dump > /backups/dump.db', shell=True)
 
 async def backup_files():
     shutil.make_archive('/backups/files', 'gztar', base_dir='/files')
